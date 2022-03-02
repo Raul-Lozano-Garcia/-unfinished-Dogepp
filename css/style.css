@@ -139,6 +139,19 @@ a.nav-link{
     color: var(--blanco) !important;
 }
 
+a.nav-link::after{
+    content: "";
+    display: block;
+    height: 1px;
+    width: 0%;
+    background-color: var(--blanco);
+    transition: all 300ms ease-in-out;
+}
+
+a.nav-link:hover::after{
+    width: 50%;
+}
+
 .navbar-collapse,.collapse,.show{
     justify-content: flex-end;
 }

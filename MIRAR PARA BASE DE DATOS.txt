@@ -1,0 +1,92 @@
+usuarios:
+dni CP
+tipo:0 (es normal, para no poner anuncios) o 1 para poner
+nombre
+nick UNICO
+contraseña
+telefono
+imagen
+activo
+
+¿COMO HAGO PARA QUE TELEFONO E IMAGEN SOLO SEAN OPCIONALES PARA ADMIN?
+
+empresas:
+cif CP
+nombre
+contraseña
+telefono
+imagen
+activo
+localizacion (SIMPLE TEXTO)
+tipo (CENTRO COMERCIAL, TIENDA DE MASCOTAS...)
+reglas
+
+comentarios_empresas:
+empresa CP
+usuario CP
+comentario
+
+mascotas:
+id CP
+usuario
+nombre
+raza 
+edad
+imagen
+
+anuncios:
+id CP
+usuario
+nombre
+imagen
+precio
+
+amigos:
+usuario1 CP
+usuario2 CP (y cada vez que se agregan se hace igual pero al reves, osea, dos inserciones por solicitud)
+PARA BORRARLOS TAMBIEN HACERLO EN LOS DOS SENTIDOS
+
+solicitudes:
+usuario1 CP
+usuario2 CP
+mensaje 
+
+parques:
+id CP
+nombre
+imagen
+descripcion
+localización
+reglas
+
+comentarios_parques:
+parque CP
+usuario CP
+comentario
+
+eventos:
+nombre 
+imagen
+empresa CP
+fecha CP
+descripcion
+localizacion
+
+rutas:
+id CP
+usuario
+inicio (simple texto)
+fin (simple texto)
+fecha
+hora
+reglas
+mapa
+
+comentarios_rutas:
+ruta CP
+usuario CP
+comentario
+
+gente_rutas:
+ruta CP
+usuario CP
