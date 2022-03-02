@@ -79,6 +79,35 @@ h1,h2{
     }
 }
 
+@keyframes info_h2 {
+    0%   {
+        transform: translate(30px,30px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(30px,0px);
+        opacity:0.5;
+    }
+
+    100% {
+        transform: translate(0px,0px);
+        opacity:1;
+    }
+}
+
+@keyframes contador {
+    0%   {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 /* CLASES */
 .boton{
     border: solid 1px var(--blanco);
@@ -123,7 +152,8 @@ a.nav-link{
     color: var(--blanco);
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover, .dropdown-item:active{
+    background-color: var(--blanco);
     color: var(--oscuro);
 }
 
@@ -165,9 +195,13 @@ a.nav-link{
     animation: trans_izq 2.5s linear 0s 1 forwards;
 }
 
+.info-banner .decoracion_banner h1{
+    font-size: 4em;
+}
+
 @media only screen and (min-width: 768px) {
     .info-banner .decoracion_banner{
-        background-color: var(--oscuro);
+        background-color: rgba(102, 179, 102,.7);
     }
   }
 
@@ -186,6 +220,10 @@ main{
     border-radius: 15px;
 }
 
+.info_h2{
+    animation: info_h2 2.5s linear 0s 1 forwards;
+}
+
 
 #info h2{
     padding: .5em;
@@ -193,6 +231,8 @@ main{
     color: var(--blanco);
     border-radius: 15px;
     margin-bottom: 1em;
+    transform: translate(30px,30px);
+    opacity: 0;
 }
 
 
@@ -222,6 +262,74 @@ main{
     .info2 .btn{
         display: block;
         margin-bottom: 1em;
+    }
+}
+
+/* TIPOS */
+#tipos h2::after{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: var(--oscuro);
+    margin-bottom: 1em;
+}
+
+.tipo_cuenta{
+    border: solid 1px var(--oscuro);
+    border-radius: 15px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: scale(1);
+    transition: all 300ms ease-in-out;
+}
+
+.tipo_cuenta:hover{
+    transform: scale(1.05);
+}
+
+.tipo_cuenta h3{
+    margin: 1em 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .tipo_cuenta{
+        margin: 1em 0;
+    }
+}
+
+/* API COVID */
+#api_covid h2::after{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: var(--oscuro);
+    margin-bottom: 1em;
+}
+
+#api_covid h3{
+    min-height: 50px;
+}
+
+.contador_animacion{
+    animation: contador 2.5s linear 0s 1 forwards;
+}
+
+.contador{
+    color: var(--oscuro);
+    font-size: 3em;
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .contador{
+        margin: 0 0 1em;
     }
 }
 
