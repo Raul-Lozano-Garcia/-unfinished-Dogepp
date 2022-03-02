@@ -313,7 +313,7 @@ main{
 }
 
 #api_covid h3{
-    min-height: 50px;
+    min-height: 69px;
 }
 
 .contador_animacion{
@@ -332,6 +332,38 @@ main{
         margin: 0 0 1em;
     }
 }
+
+/* COOKIES */
+.cookie-consent-modal{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+    align-items: flex-end;
+  }
+  .cookie-consent-modal.active{
+    display: flex;
+  }
+  .content{
+    background-color: var(--blanco);
+    padding: 3em;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .btns{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2em;
+  }
+  
+  .btn.accept{
+    background-color: var(--oscuro);
+    color: var(--blanco);
+  }
 
 /* FOOTER */
 footer{
@@ -414,3 +446,8 @@ footer li:hover::after{
 .col-copyright span{
     font-weight: bold;
 }
+
+/* TEXTOS LEGALES */
+#textos_legales ul li{
+    list-style: circle;
+  }

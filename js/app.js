@@ -3,7 +3,8 @@
 //EFECTO SCROLL INFO
 const info_h2=document.querySelectorAll("#info h2");
 
-document.addEventListener("scroll",
+if(info_h2!==null){
+    document.addEventListener("scroll",
     ()=>{
         let top=document.documentElement.scrollTop;
         if(top>100){
@@ -15,6 +16,30 @@ document.addEventListener("scroll",
             info_h2[1].classList.add("info_h2");
         }
     });
+}
+
+
+//MODAL COOKIES
+const cookieModal = document.querySelector(".cookie-consent-modal")
+const cancelCookieBtn = document.querySelector(".btn.cancel")
+const acceptCookieBtn = document.querySelector(".btn.accept")
+
+if(cancelCookieBtn!==null){
+    cancelCookieBtn.addEventListener("click", ()=>{
+        cookieModal.classList.remove("active")
+    })
+    acceptCookieBtn.addEventListener("click", ()=>{
+        cookieModal.classList.remove("active")
+        localStorage.setItem("cookieAccepted", "yes")
+    })
+    
+    setTimeout(()=>{
+        const cookieAccepted = localStorage.getItem("cookieAccepted")
+        if (cookieAccepted != "yes"){
+            cookieModal.classList.add("active")
+        }
+    }, 2000)
+}
 
 // API COVID-19
 const contador_espania=document.querySelector(".contador_espania");
@@ -37,66 +62,69 @@ if(dia<=9){
     dia_formateado=dia;
 }
 
-(async () => {
+if(contador_espania!==null){
 
-    const respuesta1= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
+    (async () => {
 
-    const datos1=await respuesta1.json();
+        const respuesta1= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
 
-    const lista1=datos1["dates"][`${anio_formateado}-${mes_formateado}-${dia_formateado}`]["countries"]["Spain"]["today_confirmed"];
+        const datos1=await respuesta1.json();
 
-    contador_espania.setAttribute("data-target",lista1);
+        const lista1=datos1["dates"][`${anio_formateado}-${mes_formateado}-${dia_formateado}`]["countries"]["Spain"]["today_confirmed"];
 
-    const respuesta2= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
+        contador_espania.setAttribute("data-target",lista1);
 
-    const datos2=await respuesta2.json();
+        const respuesta2= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
 
-    const lista2=datos2["dates"][`${anio_formateado}-${mes_formateado}-${dia_formateado}`]["countries"]["Spain"]["today_new_confirmed"];
+        const datos2=await respuesta2.json();
 
-    contador_espania_hoy.setAttribute("data-target",lista2);
+        const lista2=datos2["dates"][`${anio_formateado}-${mes_formateado}-${dia_formateado}`]["countries"]["Spain"]["today_new_confirmed"];
 
-    const respuesta3= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
+        contador_espania_hoy.setAttribute("data-target",lista2);
 
-    const datos3=await respuesta3.json();
+        const respuesta3= await fetch(`https://api.covid19tracking.narrativa.com/api/${anio_formateado}-${mes_formateado}-${dia_formateado}/country/spain`);
 
-    const lista3=datos3["total"]["today_confirmed"];
+        const datos3=await respuesta3.json();
 
-    contador_mundo.setAttribute("data-target",lista3);
+        const lista3=datos3["total"]["today_confirmed"];
 
-    const contadores=document.querySelectorAll(".contador");
+        contador_mundo.setAttribute("data-target",lista3);
 
-    contadores.forEach(
-        (contador)=>{
-            contador.innerText='0';
+        const contadores=document.querySelectorAll(".contador");
 
-            document.addEventListener("scroll",
-            ()=>{
-                let top=document.documentElement.scrollTop;
+        contadores.forEach(
+            (contador)=>{
+                contador.innerText='0';
 
-                    if(top>1950){
+                document.addEventListener("scroll",
+                ()=>{
+                    let top=document.documentElement.scrollTop;
+
+                        if(top>1950){
+                    
+                            contador.classList.add("contador_animacion");
                 
-                        contador.classList.add("contador_animacion");
-            
-                        const actualizar_contador=()=>{
-                            const total=+contador.getAttribute("data-target");
-                            const c=+contador.innerText;
-            
-                            const incremento=total/5000;
-            
-                            if(c<total){
-                                contador.innerText=`${Math.ceil(c + incremento)}`;
-                                setTimeout(actualizar_contador,1);
-                            }else{
-                                contador.innerText=total;
+                            const actualizar_contador=()=>{
+                                const total=+contador.getAttribute("data-target");
+                                const c=+contador.innerText;
+                
+                                const incremento=total/5000;
+                
+                                if(c<total){
+                                    contador.innerText=`${Math.ceil(c + incremento)}`;
+                                    setTimeout(actualizar_contador,1);
+                                }else{
+                                    contador.innerText=total;
+                                }
                             }
-                        }
-                        actualizar_contador();
-               
-                }
-         
-            });
-        }
-    );
+                            actualizar_contador();
+                
+                    }
+            
+                });
+            }
+        );
 
-})();
+    })();
 
+}
