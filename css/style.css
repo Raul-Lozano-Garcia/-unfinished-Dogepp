@@ -7,11 +7,9 @@
 
 /* VARIABLES */
 :root{
-    --principal: #91ff91;
-    --oscuro: #66b366;
-    --claro: #c8ffc8;
-    --analogo: #4dffff;
-    --complementario: #ff4d4d;
+    --principal: #66b366;
+    --analogo: #66b3b3;
+    --complementario: #b366b3;
     --blanco:#f4f7f6;
     --negro:#202124;
 }
@@ -30,6 +28,8 @@ html,body {
     line-height: 1.6;
     scroll-behavior: smooth;
     scroll-padding-top: 98px;
+    background-color: var(--blanco);
+    overflow-x: hidden;
 }
 
 @media only screen and (min-width: 768px) {
@@ -111,21 +111,88 @@ h1,h2{
 /* CLASES */
 .boton{
     border: solid 1px var(--blanco);
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     color: var(--blanco);  
     transition: all 300ms ease-in-out;
   }
 
 .boton:hover{
-    border: solid 1px var(--oscuro);
+    border: solid 1px var(--principal);
     background-color: var(--blanco);
-    color: var(--oscuro);  
+    color: var(--principal);  
+}
+
+.boton_analogo{
+    border: solid 1px var(--blanco);
+    background-color: var(--analogo);
+    color: var(--blanco);  
+    transition: all 300ms ease-in-out;
+  }
+
+.boton_analogo:hover{
+    border: solid 1px var(--analogo);
+    background-color: var(--blanco);
+    color: var(--analogo);  
+}
+
+.boton_complementario{
+    border: solid 1px var(--blanco);
+    background-color: var(--complementario);
+    color: var(--blanco);  
+    transition: all 300ms ease-in-out;
+  }
+
+.boton_complementario:hover{
+    border: solid 1px var(--complementario);
+    background-color: var(--blanco);
+    color: var(--complementario);  
+}
+
+.volver{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.flecha_volver{
+    color: var(--complementario);
+    font-size: 2em;
+    transform: scale(1);
+    transition: all 300ms ease-in-out
+}
+
+.flecha_volver:hover{
+    color: var(--complementario);
+    transform: scale(1.1);
+}
+
+/* TRANSICION ENTRE PAGINAS CON SWUP */
+.transition-fade{
+    opacity: 1;
+    transition: 500ms;
+    transform: translateX(0px);
+    transform-origin: left;
+}
+
+html.is-animating .transition-fade{
+    opacity: 1;
+    transform: translateX(100vw);
+}
+
+html.is-leaving .transition-fade{
+    opacity: 0;
+    transform: translateX(0px);
+}
+
+/* MAIN */
+main{
+    position: relative;
 }
   
 
 /* HEADER */
 header{
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     position:sticky;
     top: 0;
     z-index: 999;
@@ -158,7 +225,7 @@ a.nav-link:hover::after{
 
 .dropdown-menu{
     border: solid 1px var(--blanco);
-    background-color: var(--oscuro);
+    background-color: var(--principal);
 }
 
 .dropdown-item{
@@ -167,7 +234,7 @@ a.nav-link:hover::after{
 
 .dropdown-item:hover, .dropdown-item:active{
     background-color: var(--blanco);
-    color: var(--oscuro);
+    color: var(--principal);
 }
 
 /* BANNER */
@@ -218,11 +285,6 @@ a.nav-link:hover::after{
     }
   }
 
-/* MAIN */
-main{
-    background-color: var(--blanco);
-}
-
 /* INFO */
 #info{
     overflow-x: hidden;
@@ -240,7 +302,7 @@ main{
 
 #info h2{
     padding: .5em;
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     color: var(--blanco);
     border-radius: 15px;
     margin-bottom: 1em;
@@ -252,7 +314,7 @@ main{
 .info1::after{
     content: "";
     display: block;
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     height: 1px;
     width: 90%;
     margin: 2em auto;
@@ -284,12 +346,12 @@ main{
     display: block;
     width: 50%;
     height: 1px;
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     margin-bottom: 1em;
 }
 
 .tipo_cuenta{
-    border: solid 1px var(--oscuro);
+    border: solid 1px var(--principal);
     border-radius: 15px;
     padding: 2em;
     display: flex;
@@ -321,7 +383,7 @@ main{
     display: block;
     width: 50%;
     height: 1px;
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     margin-bottom: 1em;
 }
 
@@ -334,7 +396,7 @@ main{
 }
 
 .contador{
-    color: var(--oscuro);
+    color: var(--principal);
     font-size: 3em;
     transform: translateY(30px);
     opacity: 0;
@@ -374,7 +436,7 @@ main{
   }
   
   .btn.accept{
-    background-color: var(--oscuro);
+    background-color: var(--principal);
     color: var(--blanco);
   }
 
@@ -463,4 +525,41 @@ footer li:hover::after{
 /* TEXTOS LEGALES */
 #textos_legales ul li{
     list-style: circle;
+  }
+
+/* FORMULARIO ACCESO */
+#formu_acceso{
+    width: 100vw;
+    min-height: 90vh;
+    background: url("../assets/imagenes/acceder/fondo.jpg") no-repeat center center/cover;
+}
+
+#formu_acceso .container, #formu_acceso .container .row{
+    height: 90vh;
+}
+
+.fila_formu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-body{
+    background-color: var(--blanco);
+    border-radius: 15px;
+    color: var(--negro);
+    border: solid 1px var(--negro);  
+  }
+  
+  .invalid-feedback{
+  color: var(--claro);
+  }
+
+  /* TIPOS ACCESO */
+  .tipos_acceso{
+      min-height: 90vh;
+  }
+
+  .tipos_acceso a{
+      color: var(--negro);
   }

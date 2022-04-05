@@ -3,7 +3,7 @@
 //EFECTO SCROLL INFO
 const info_h2=document.querySelectorAll("#info h2");
 
-if(info_h2!==null){
+if(info_h2.length>0){
     document.addEventListener("scroll",
     ()=>{
         let top=document.documentElement.scrollTop;
@@ -127,4 +127,18 @@ if(contador_espania!==null){
 
     })();
 
+}
+
+//FORMULARIO ACCESO
+const form = document.querySelector('#requires-validation');
+
+if(form!==null){
+    form.addEventListener('submit', (event)=> {
+        if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+        }
+    
+        form.classList.add('was-validated')
+    }, false);
 }

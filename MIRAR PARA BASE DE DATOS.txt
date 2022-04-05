@@ -7,8 +7,10 @@ contraseña
 telefono
 imagen
 activo
+estado(opcional) (ME REFIERO A UN TEXTO COMO LOS ESTADOS DE WHATSAPP)
 
-¿COMO HAGO PARA QUE TELEFONO E IMAGEN SOLO SEAN OPCIONALES PARA ADMIN?
+¿COMO HAGO PARA QUE TELEFONO, IMAGEN SOLO SEAN OPCIONALES PARA ADMIN?
+¿HACE FALTA CREAR UN TERCER TIPO PARA EL ADMIN?
 
 empresas:
 cif CP
@@ -19,12 +21,6 @@ imagen
 activo
 localizacion (SIMPLE TEXTO)
 tipo (CENTRO COMERCIAL, TIENDA DE MASCOTAS...)
-reglas
-
-comentarios_empresas:
-empresa CP
-usuario CP
-comentario
 
 mascotas:
 id CP
@@ -40,6 +36,7 @@ usuario
 nombre
 imagen
 precio
+descripcion
 
 amigos:
 usuario1 CP
@@ -50,6 +47,9 @@ solicitudes:
 usuario1 CP
 usuario2 CP
 mensaje 
+
+
+¿COMO HAGO PARA AGREGARLO CON EL NOMBRE QUE YO QUIERA?
 
 parques:
 id CP
@@ -82,11 +82,11 @@ hora
 reglas
 mapa
 
-comentarios_rutas:
-ruta CP
-usuario CP
-comentario
 
 gente_rutas:
 ruta CP
 usuario CP
+
+reportes:
+de_usuario CP
+para_usuario CP
